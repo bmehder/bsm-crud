@@ -177,6 +177,9 @@ var app = (function () {
     function onMount(fn) {
         get_current_component().$$.on_mount.push(fn);
     }
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
+    }
 
     const dirty_components = [];
     const binding_callbacks = [];
@@ -724,7 +727,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (72:2) {#if list.length}
+    // (69:2) {#if list.length}
     function create_if_block(ctx) {
     	let ul;
     	let each_blocks = [];
@@ -757,9 +760,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Clear All";
     			attr_dev(ul, "class", "svelte-1tit2fg");
-    			add_location(ul, file, 72, 4, 1632);
+    			add_location(ul, file, 69, 4, 1691);
     			attr_dev(button, "class", "clear-btn svelte-1tit2fg");
-    			add_location(button, file, 84, 4, 1955);
+    			add_location(button, file, 81, 4, 2014);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -821,14 +824,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(72:2) {#if list.length}",
+    		source: "(69:2) {#if list.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:6) {#each list as item, i (i)}
+    // (71:6) {#each list as item, i (i)}
     function create_each_block(key_1, ctx) {
     	let div;
     	let li;
@@ -863,11 +866,11 @@ var app = (function () {
     			span.textContent = "X";
     			t3 = space();
     			attr_dev(li, "class", "svelte-1tit2fg");
-    			add_location(li, file, 78, 10, 1803);
+    			add_location(li, file, 75, 10, 1862);
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 79, 10, 1861);
+    			add_location(span, file, 76, 10, 1920);
     			attr_dev(div, "class", "svelte-1tit2fg");
-    			add_location(div, file, 74, 8, 1679);
+    			add_location(div, file, 71, 8, 1738);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -920,7 +923,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(74:6) {#each list as item, i (i)}",
+    		source: "(71:6) {#each list as item, i (i)}",
     		ctx
     	});
 
@@ -964,17 +967,17 @@ var app = (function () {
     			t6 = space();
     			if (if_block) if_block.c();
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 64, 4, 1409);
-    			add_location(br, file, 64, 25, 1430);
+    			add_location(span, file, 61, 4, 1468);
+    			add_location(br, file, 61, 25, 1489);
     			attr_dev(h1, "class", "svelte-1tit2fg");
-    			add_location(h1, file, 63, 2, 1400);
+    			add_location(h1, file, 60, 2, 1459);
     			attr_dev(input_1, "class", "svelte-1tit2fg");
-    			add_location(input_1, file, 66, 2, 1463);
+    			add_location(input_1, file, 63, 2, 1522);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
     			attr_dev(button, "class", "svelte-1tit2fg");
-    			add_location(button, file, 67, 2, 1504);
+    			add_location(button, file, 64, 2, 1563);
     			attr_dev(main, "class", "svelte-1tit2fg");
-    			add_location(main, file, 62, 0, 1391);
+    			add_location(main, file, 59, 0, 1450);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1078,8 +1081,7 @@ var app = (function () {
     	let list = [];
     	let selectedItem = null;
 
-    	// $: console.log(selectedItem);
-    	const getListFromLocalStorage = () => $$invalidate(2, list = localStorage.getItem("list") !== null
+    	const getListFromLocalStorage = () => $$invalidate(2, list = localStorage.getItem("list") !== null && localStorage.getItem("list") !== ""
     	? localStorage.getItem("list").split(",")
     	: []);
 
@@ -1102,32 +1104,25 @@ var app = (function () {
     		handleInput();
     	};
 
-    	const handleInput = i => {
-    		if (i >= 0) {
-    			$$invalidate(8, selectedItem = i);
+    	const handleInput = selected => {
+    		if (selected >= 0) {
+    			$$invalidate(8, selectedItem = selected);
     			$$invalidate(1, value = list[selectedItem]);
     		} else {
     			$$invalidate(8, selectedItem = null);
     			$$invalidate(1, value = "");
     		}
-
-    		focusOnInput();
     	};
 
     	const clearAll = () => {
     		const isConfirmed = confirm("Are you sure you want to remove all items?");
     		if (isConfirmed) $$invalidate(2, list = []);
     		saveToLocalStorage();
-    		focusOnInput();
-    	};
+    	}; // focusOnInput();
 
     	const focusOnInput = () => input.focus();
-
-    	onMount(() => {
-    		getListFromLocalStorage();
-    		focusOnInput();
-    	});
-
+    	onMount(() => getListFromLocalStorage());
+    	afterUpdate(() => focusOnInput());
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -1152,6 +1147,7 @@ var app = (function () {
     	const click_handler_1 = i => removeFromList(i);
 
     	$$self.$capture_state = () => ({
+    		afterUpdate,
     		onMount,
     		fade,
     		input,

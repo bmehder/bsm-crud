@@ -1,4 +1,5 @@
 <script>
+  import { afterUpdate } from "svelte";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
@@ -7,11 +8,10 @@
   let selectedItem = null;
   $: isUpdateMode = selectedItem !== null;
 
-  // $: console.log(selectedItem);
-
   const getListFromLocalStorage = () =>
     (list =
-      localStorage.getItem("list") !== null
+      localStorage.getItem("list") !== null &&
+      localStorage.getItem("list") !== ""
         ? localStorage.getItem("list").split(",")
         : []);
 
@@ -31,31 +31,28 @@
     handleInput();
   };
 
-  const handleInput = (i) => {
-    if (i >= 0) {
-      selectedItem = i;
+  const handleInput = (selected) => {
+    if (selected >= 0) {
+      selectedItem = selected;
       value = list[selectedItem];
     } else {
       selectedItem = null;
       value = "";
     }
-    focusOnInput();
   };
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     if (isConfirmed) list = [];
-
     saveToLocalStorage();
-    focusOnInput();
+    // focusOnInput();
   };
 
   const focusOnInput = () => input.focus();
 
-  onMount(() => {
-    getListFromLocalStorage();
-    focusOnInput();
-  });
+  onMount(() => getListFromLocalStorage());
+
+  afterUpdate(() => focusOnInput());
 </script>
 
 <svelte:window on:keydown={(e) => e.code === "Enter" && value && addToList()} />

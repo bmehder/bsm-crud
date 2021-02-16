@@ -29,7 +29,7 @@
   };
 
   const handleInput = (selected) => {
-    if (selected >= 0) {
+    if (selected !== null) {
       selectedItem = selected;
       value = list[selectedItem];
     } else {

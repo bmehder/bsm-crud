@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
-  let input, value;
+  let inputEl, value;
   let list = [];
   let selectedItem = null;
   $: isUpdateMode = selectedItem !== null;
@@ -43,7 +43,7 @@
     isConfirmed ? (list = []) : focusOnInput();
   };
 
-  const focusOnInput = () => input.focus();
+  const focusOnInput = () => inputEl.focus();
 
   onMount(() => getListFromLocalStorage());
 
@@ -59,7 +59,7 @@
   <h1>
     <span>CRUD App</span><br />w/ Local Storage
   </h1>
-  <input bind:this={input} bind:value />
+  <input bind:this={inputEl} bind:value />
   <button disabled={!value} on:click={addToList}>
     {isUpdateMode ? "Update" : "Add"} Item
   </button>

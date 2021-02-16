@@ -760,9 +760,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Clear All";
     			attr_dev(ul, "class", "svelte-1tit2fg");
-    			add_location(ul, file, 67, 4, 1635);
+    			add_location(ul, file, 67, 4, 1641);
     			attr_dev(button, "class", "clear-btn svelte-1tit2fg");
-    			add_location(button, file, 79, 4, 1958);
+    			add_location(button, file, 79, 4, 1964);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -866,11 +866,11 @@ var app = (function () {
     			span.textContent = "X";
     			t3 = space();
     			attr_dev(li, "class", "svelte-1tit2fg");
-    			add_location(li, file, 73, 10, 1806);
+    			add_location(li, file, 73, 10, 1812);
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 74, 10, 1864);
+    			add_location(span, file, 74, 10, 1870);
     			attr_dev(div, "class", "svelte-1tit2fg");
-    			add_location(div, file, 69, 8, 1682);
+    			add_location(div, file, 69, 8, 1688);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -937,7 +937,7 @@ var app = (function () {
     	let br;
     	let t1;
     	let t2;
-    	let input_1;
+    	let input;
     	let t3;
     	let button;
     	let t4_value = (/*isUpdateMode*/ ctx[3] ? "Update" : "Add") + "";
@@ -959,7 +959,7 @@ var app = (function () {
     			br = element("br");
     			t1 = text("w/ Local Storage");
     			t2 = space();
-    			input_1 = element("input");
+    			input = element("input");
     			t3 = space();
     			button = element("button");
     			t4 = text(t4_value);
@@ -967,17 +967,17 @@ var app = (function () {
     			t6 = space();
     			if (if_block) if_block.c();
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 59, 4, 1412);
-    			add_location(br, file, 59, 25, 1433);
+    			add_location(span, file, 59, 4, 1416);
+    			add_location(br, file, 59, 25, 1437);
     			attr_dev(h1, "class", "svelte-1tit2fg");
-    			add_location(h1, file, 58, 2, 1403);
-    			attr_dev(input_1, "class", "svelte-1tit2fg");
-    			add_location(input_1, file, 61, 2, 1466);
+    			add_location(h1, file, 58, 2, 1407);
+    			attr_dev(input, "class", "svelte-1tit2fg");
+    			add_location(input, file, 61, 2, 1470);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
     			attr_dev(button, "class", "svelte-1tit2fg");
-    			add_location(button, file, 62, 2, 1507);
+    			add_location(button, file, 62, 2, 1513);
     			attr_dev(main, "class", "svelte-1tit2fg");
-    			add_location(main, file, 57, 0, 1394);
+    			add_location(main, file, 57, 0, 1398);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -989,9 +989,9 @@ var app = (function () {
     			append_dev(h1, br);
     			append_dev(h1, t1);
     			append_dev(main, t2);
-    			append_dev(main, input_1);
-    			/*input_1_binding*/ ctx[10](input_1);
-    			set_input_value(input_1, /*value*/ ctx[1]);
+    			append_dev(main, input);
+    			/*input_binding*/ ctx[10](input);
+    			set_input_value(input, /*value*/ ctx[1]);
     			append_dev(main, t3);
     			append_dev(main, button);
     			append_dev(button, t4);
@@ -1003,7 +1003,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(window, "keydown", /*keydown_handler*/ ctx[9], false, false, false),
-    					listen_dev(input_1, "input", /*input_1_input_handler*/ ctx[11]),
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[11]),
     					listen_dev(button, "click", /*addToList*/ ctx[4], false, false, false)
     				];
 
@@ -1011,8 +1011,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*value*/ 2 && input_1.value !== /*value*/ ctx[1]) {
-    				set_input_value(input_1, /*value*/ ctx[1]);
+    			if (dirty & /*value*/ 2 && input.value !== /*value*/ ctx[1]) {
+    				set_input_value(input, /*value*/ ctx[1]);
     			}
 
     			if ((!current || dirty & /*isUpdateMode*/ 8) && t4_value !== (t4_value = (/*isUpdateMode*/ ctx[3] ? "Update" : "Add") + "")) set_data_dev(t4, t4_value);
@@ -1055,7 +1055,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
-    			/*input_1_binding*/ ctx[10](null);
+    			/*input_binding*/ ctx[10](null);
     			if (if_block) if_block.d();
     			mounted = false;
     			run_all(dispose);
@@ -1077,7 +1077,7 @@ var app = (function () {
     	let isUpdateMode;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	let input, value;
+    	let inputEl, value;
     	let list = [];
     	let selectedItem = null;
 
@@ -1118,7 +1118,7 @@ var app = (function () {
     		: focusOnInput();
     	};
 
-    	const focusOnInput = () => input.focus();
+    	const focusOnInput = () => inputEl.focus();
     	onMount(() => getListFromLocalStorage());
 
     	afterUpdate(() => {
@@ -1134,14 +1134,14 @@ var app = (function () {
 
     	const keydown_handler = e => e.code === "Enter" && value && addToList();
 
-    	function input_1_binding($$value) {
+    	function input_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
-    			input = $$value;
-    			$$invalidate(0, input);
+    			inputEl = $$value;
+    			$$invalidate(0, inputEl);
     		});
     	}
 
-    	function input_1_input_handler() {
+    	function input_input_handler() {
     		value = this.value;
     		$$invalidate(1, value);
     	}
@@ -1153,7 +1153,7 @@ var app = (function () {
     		afterUpdate,
     		onMount,
     		fade,
-    		input,
+    		inputEl,
     		value,
     		list,
     		selectedItem,
@@ -1168,7 +1168,7 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("input" in $$props) $$invalidate(0, input = $$props.input);
+    		if ("inputEl" in $$props) $$invalidate(0, inputEl = $$props.inputEl);
     		if ("value" in $$props) $$invalidate(1, value = $$props.value);
     		if ("list" in $$props) $$invalidate(2, list = $$props.list);
     		if ("selectedItem" in $$props) $$invalidate(8, selectedItem = $$props.selectedItem);
@@ -1186,7 +1186,7 @@ var app = (function () {
     	};
 
     	return [
-    		input,
+    		inputEl,
     		value,
     		list,
     		isUpdateMode,
@@ -1196,8 +1196,8 @@ var app = (function () {
     		clearAll,
     		selectedItem,
     		keydown_handler,
-    		input_1_binding,
-    		input_1_input_handler,
+    		input_binding,
+    		input_input_handler,
     		click_handler,
     		click_handler_1
     	];

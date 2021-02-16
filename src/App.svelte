@@ -21,13 +21,13 @@
     if (value) {
       isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]);
     }
-    saveToLocalStorage();
+    // saveToLocalStorage();
     handleInput();
   };
 
   const removeFromList = (i) => {
     list = list.filter((item, arrIdx) => arrIdx !== i);
-    saveToLocalStorage();
+    // saveToLocalStorage();
     handleInput();
   };
 
@@ -52,7 +52,10 @@
 
   onMount(() => getListFromLocalStorage());
 
-  afterUpdate(() => focusOnInput());
+  afterUpdate(() => {
+    focusOnInput();
+    saveToLocalStorage();
+  });
 </script>
 
 <svelte:window on:keydown={(e) => e.code === "Enter" && value && addToList()} />

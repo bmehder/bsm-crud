@@ -1506,7 +1506,7 @@ var app = (function () {
 
     	header = new Header({
     			props: {
-    				title: "CRUD App",
+    				title: "CRUD App+",
     				subTitle: "w/ Local Storage"
     			},
     			$$inline: true

@@ -58,7 +58,7 @@
 <svelte:window on:keydown={(e) => e.code === "Enter" && value && addToList()} />
 
 <main>
-  <Header title="CRUD App" subTitle="w/ Local Storage" />
+  <Header title="CRUD App+" subTitle="w/ Local Storage" />
 
   <Input {focus} bind:value />
 

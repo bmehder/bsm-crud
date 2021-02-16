@@ -18,6 +18,17 @@ body {
   font-family: "Helvetica Neue", sans-serif;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 80px auto 0;
+  padding: 2em;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
 a {
   color: rgb(0, 100, 200);
   text-decoration: none;

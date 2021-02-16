@@ -16,12 +16,18 @@
   const addToList = () => {
     value &&
       (isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]));
-    handleInput();
+    return handleInput();
   };
 
   const removeFromList = (i) => {
     list = list.filter((_, arrIdx) => arrIdx !== i);
-    handleInput();
+    return handleInput();
+  };
+
+  const clearAll = () => {
+    const isConfirmed = confirm("Are you sure you want to remove all items?");
+    isConfirmed && (list = []);
+    return handleInput();
   };
 
   const handleInput = (newSelection) => {
@@ -33,12 +39,6 @@
       value = "";
     }
     focus = true;
-  };
-
-  const clearAll = () => {
-    const isConfirmed = confirm("Are you sure you want to remove all items?");
-    isConfirmed && (list = []);
-    handleInput();
   };
 
   onMount(() => {
@@ -71,16 +71,3 @@
     on:clearall={(e) => clearAll()}
   />
 </main>
-
-<style>
-  main {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 80px auto 0;
-    padding: 2em;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-  }
-</style>

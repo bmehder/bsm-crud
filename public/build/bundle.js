@@ -1554,8 +1554,7 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t2 = space();
     			create_component(list_1.$$.fragment);
-    			attr_dev(main, "class", "svelte-1ruvcou");
-    			add_location(main, file$4, 59, 0, 1382);
+    			add_location(main, file$4, 59, 0, 1403);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1646,12 +1645,18 @@ var app = (function () {
     		? $$invalidate(2, list[selectedItem] = value, list)
     		: $$invalidate(2, list = [...list, value]));
 
-    		handleInput();
+    		return handleInput();
     	};
 
     	const removeFromList = i => {
     		$$invalidate(2, list = list.filter((_, arrIdx) => arrIdx !== i));
-    		handleInput();
+    		return handleInput();
+    	};
+
+    	const clearAll = () => {
+    		const isConfirmed = confirm("Are you sure you want to remove all items?");
+    		isConfirmed && $$invalidate(2, list = []);
+    		return handleInput();
     	};
 
     	const handleInput = newSelection => {
@@ -1664,12 +1669,6 @@ var app = (function () {
     		}
 
     		$$invalidate(1, focus = true);
-    	};
-
-    	const clearAll = () => {
-    		const isConfirmed = confirm("Are you sure you want to remove all items?");
-    		isConfirmed && $$invalidate(2, list = []);
-    		handleInput();
     	};
 
     	onMount(() => {
@@ -1713,8 +1712,8 @@ var app = (function () {
     		selectedItem,
     		addToList,
     		removeFromList,
-    		handleInput,
     		clearAll,
+    		handleInput,
     		isUpdateMode
     	});
 
@@ -1743,8 +1742,8 @@ var app = (function () {
     		isUpdateMode,
     		addToList,
     		removeFromList,
-    		handleInput,
     		clearAll,
+    		handleInput,
     		selectedItem,
     		keydown_handler,
     		input_value_binding,

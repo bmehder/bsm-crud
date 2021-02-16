@@ -722,12 +722,12 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[17] = list[i];
-    	child_ctx[19] = i;
+    	child_ctx[15] = list[i];
+    	child_ctx[17] = i;
     	return child_ctx;
     }
 
-    // (70:2) {#if list.length}
+    // (67:2) {#if list.length}
     function create_if_block(ctx) {
     	let ul;
     	let each_blocks = [];
@@ -739,7 +739,7 @@ var app = (function () {
     	let dispose;
     	let each_value = /*list*/ ctx[2];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*i*/ ctx[19];
+    	const get_key = ctx => /*i*/ ctx[17];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -760,9 +760,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Clear All";
     			attr_dev(ul, "class", "svelte-1tit2fg");
-    			add_location(ul, file, 70, 4, 1656);
+    			add_location(ul, file, 67, 4, 1532);
     			attr_dev(button, "class", "clear-btn svelte-1tit2fg");
-    			add_location(button, file, 82, 4, 1979);
+    			add_location(button, file, 79, 4, 1855);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -824,18 +824,18 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(70:2) {#if list.length}",
+    		source: "(67:2) {#if list.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:6) {#each list as item, i (i)}
+    // (69:6) {#each list as item, i (i)}
     function create_each_block(key_1, ctx) {
     	let div;
     	let li;
-    	let t0_value = /*item*/ ctx[17] + "";
+    	let t0_value = /*item*/ ctx[15] + "";
     	let t0;
     	let t1;
     	let span;
@@ -847,11 +847,11 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[12](/*i*/ ctx[19]);
+    		return /*click_handler*/ ctx[12](/*i*/ ctx[17]);
     	}
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[13](/*i*/ ctx[19]);
+    		return /*click_handler_1*/ ctx[13](/*i*/ ctx[17]);
     	}
 
     	const block = {
@@ -866,11 +866,11 @@ var app = (function () {
     			span.textContent = "X";
     			t3 = space();
     			attr_dev(li, "class", "svelte-1tit2fg");
-    			add_location(li, file, 76, 10, 1827);
+    			add_location(li, file, 73, 10, 1703);
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 77, 10, 1885);
+    			add_location(span, file, 74, 10, 1761);
     			attr_dev(div, "class", "svelte-1tit2fg");
-    			add_location(div, file, 72, 8, 1703);
+    			add_location(div, file, 69, 8, 1579);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -893,7 +893,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if ((!current || dirty & /*list*/ 4) && t0_value !== (t0_value = /*item*/ ctx[17] + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*list*/ 4) && t0_value !== (t0_value = /*item*/ ctx[15] + "")) set_data_dev(t0, t0_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -923,7 +923,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(72:6) {#each list as item, i (i)}",
+    		source: "(69:6) {#each list as item, i (i)}",
     		ctx
     	});
 
@@ -967,17 +967,17 @@ var app = (function () {
     			t6 = space();
     			if (if_block) if_block.c();
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 60, 4, 1429);
-    			add_location(br, file, 60, 25, 1450);
+    			add_location(span, file, 57, 4, 1305);
+    			add_location(br, file, 57, 25, 1326);
     			attr_dev(h1, "class", "svelte-1tit2fg");
-    			add_location(h1, file, 59, 2, 1420);
+    			add_location(h1, file, 56, 2, 1296);
     			attr_dev(input, "class", "svelte-1tit2fg");
-    			add_location(input, file, 63, 2, 1484);
+    			add_location(input, file, 60, 2, 1360);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
     			attr_dev(button, "class", "svelte-1tit2fg");
-    			add_location(button, file, 65, 2, 1528);
+    			add_location(button, file, 62, 2, 1404);
     			attr_dev(main, "class", "svelte-1tit2fg");
-    			add_location(main, file, 58, 0, 1411);
+    			add_location(main, file, 55, 0, 1287);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1081,12 +1081,6 @@ var app = (function () {
     	let list = [];
     	let selectedItem = null;
 
-    	const getListFromLocalStorage = () => $$invalidate(2, list = localStorage.getItem("list") !== null && localStorage.getItem("list") !== ""
-    	? localStorage.getItem("list").split(",")
-    	: []);
-
-    	const saveToLocalStorage = () => localStorage.setItem("list", list);
-
     	const addToList = () => {
     		value && (isUpdateMode
     		? $$invalidate(2, list[selectedItem] = value, list)
@@ -1096,7 +1090,7 @@ var app = (function () {
     	};
 
     	const removeFromList = i => {
-    		$$invalidate(2, list = list.filter((item, arrIdx) => arrIdx !== i));
+    		$$invalidate(2, list = list.filter((_, arrIdx) => arrIdx !== i));
     		handleInput();
     	};
 
@@ -1119,11 +1113,16 @@ var app = (function () {
     	};
 
     	const focusOnInput = () => inputEl.focus();
-    	onMount(() => getListFromLocalStorage());
+
+    	onMount(() => {
+    		$$invalidate(2, list = localStorage.getItem("list") !== null && localStorage.getItem("list") !== ""
+    		? localStorage.getItem("list").split(",")
+    		: []);
+    	});
 
     	afterUpdate(() => {
+    		localStorage.setItem("list", list);
     		focusOnInput();
-    		saveToLocalStorage();
     	});
 
     	const writable_props = [];
@@ -1157,8 +1156,6 @@ var app = (function () {
     		value,
     		list,
     		selectedItem,
-    		getListFromLocalStorage,
-    		saveToLocalStorage,
     		addToList,
     		removeFromList,
     		handleInput,

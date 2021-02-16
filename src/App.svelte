@@ -9,15 +9,6 @@
 
   $: isUpdateMode = selectedItem !== null;
 
-  const getListFromLocalStorage = () =>
-    (list =
-      localStorage.getItem("list") !== null &&
-      localStorage.getItem("list") !== ""
-        ? localStorage.getItem("list").split(",")
-        : []);
-
-  const saveToLocalStorage = () => localStorage.setItem("list", list);
-
   const addToList = () => {
     value &&
       (isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]));
@@ -25,7 +16,7 @@
   };
 
   const removeFromList = (i) => {
-    list = list.filter((item, arrIdx) => arrIdx !== i);
+    list = list.filter((_, arrIdx) => arrIdx !== i);
     handleInput();
   };
 
@@ -46,11 +37,17 @@
 
   const focusOnInput = () => inputEl.focus();
 
-  onMount(() => getListFromLocalStorage());
+  onMount(() => {
+    list =
+      localStorage.getItem("list") !== null &&
+      localStorage.getItem("list") !== ""
+        ? localStorage.getItem("list").split(",")
+        : [];
+  });
 
   afterUpdate(() => {
+    localStorage.setItem("list", list);
     focusOnInput();
-    saveToLocalStorage();
   });
 </script>
 

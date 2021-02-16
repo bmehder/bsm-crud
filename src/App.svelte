@@ -7,8 +7,6 @@
   let selectedItem = null;
   $: isUpdateMode = selectedItem !== null;
 
-  const onBlur = () => (selectedItem = null);
-
   const getListFromLocalStorage = () => {
     let savedListString = localStorage.getItem("list");
     let savedListArray = savedListString ? savedListString.split(",") : [];
@@ -25,7 +23,6 @@
       if (isUpdateMode) {
         list[selectedItem] = value;
       } else {
-        console.log("clicked");
         list = [...list, value];
       }
     }
@@ -68,8 +65,6 @@
     getListFromLocalStorage();
     focusOnInput();
   });
-
-  $: console.log(isUpdateMode);
 </script>
 
 <svelte:window on:keydown={(e) => e.code === "Enter" && value && addToList()} />
@@ -78,7 +73,7 @@
   <h1>
     <span>CRUD App</span><br />w/ Local Storage
   </h1>
-  <input bind:this={input} bind:value on:blur={onBlur} />
+  <input bind:this={input} bind:value />
   <button disabled={!value} on:click={addToList}>
     {isUpdateMode ? "Update" : "Add"} Item
   </button>

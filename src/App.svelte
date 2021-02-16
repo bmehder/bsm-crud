@@ -7,10 +7,7 @@
   let selectedItem = null;
   $: isUpdateMode = selectedItem !== null;
 
-  const onBlur = () => {
-    selectedItem = null;
-    // value = "";
-  };
+  const onBlur = () => (selectedItem = null);
 
   const getListFromLocalStorage = () => {
     let savedListString = localStorage.getItem("list");

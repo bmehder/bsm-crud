@@ -44,10 +44,9 @@
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
-    if (isConfirmed) {
-      list = [];
-      saveToLocalStorage();
-    }
+    if (isConfirmed) list = [];
+
+    saveToLocalStorage();
     focusOnInput();
   };
 

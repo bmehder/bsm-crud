@@ -724,7 +724,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (73:2) {#if list.length}
+    // (72:2) {#if list.length}
     function create_if_block(ctx) {
     	let ul;
     	let each_blocks = [];
@@ -757,9 +757,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Clear All";
     			attr_dev(ul, "class", "svelte-1tit2fg");
-    			add_location(ul, file, 73, 4, 1647);
+    			add_location(ul, file, 72, 4, 1632);
     			attr_dev(button, "class", "clear-btn svelte-1tit2fg");
-    			add_location(button, file, 85, 4, 1970);
+    			add_location(button, file, 84, 4, 1955);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -821,14 +821,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(73:2) {#if list.length}",
+    		source: "(72:2) {#if list.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:6) {#each list as item, i (i)}
+    // (74:6) {#each list as item, i (i)}
     function create_each_block(key_1, ctx) {
     	let div;
     	let li;
@@ -863,11 +863,11 @@ var app = (function () {
     			span.textContent = "X";
     			t3 = space();
     			attr_dev(li, "class", "svelte-1tit2fg");
-    			add_location(li, file, 79, 10, 1818);
+    			add_location(li, file, 78, 10, 1803);
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 80, 10, 1876);
+    			add_location(span, file, 79, 10, 1861);
     			attr_dev(div, "class", "svelte-1tit2fg");
-    			add_location(div, file, 75, 8, 1694);
+    			add_location(div, file, 74, 8, 1679);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -920,7 +920,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(75:6) {#each list as item, i (i)}",
+    		source: "(74:6) {#each list as item, i (i)}",
     		ctx
     	});
 
@@ -964,17 +964,17 @@ var app = (function () {
     			t6 = space();
     			if (if_block) if_block.c();
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 65, 4, 1424);
-    			add_location(br, file, 65, 25, 1445);
+    			add_location(span, file, 64, 4, 1409);
+    			add_location(br, file, 64, 25, 1430);
     			attr_dev(h1, "class", "svelte-1tit2fg");
-    			add_location(h1, file, 64, 2, 1415);
+    			add_location(h1, file, 63, 2, 1400);
     			attr_dev(input_1, "class", "svelte-1tit2fg");
-    			add_location(input_1, file, 67, 2, 1478);
+    			add_location(input_1, file, 66, 2, 1463);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
     			attr_dev(button, "class", "svelte-1tit2fg");
-    			add_location(button, file, 68, 2, 1519);
+    			add_location(button, file, 67, 2, 1504);
     			attr_dev(main, "class", "svelte-1tit2fg");
-    			add_location(main, file, 63, 0, 1406);
+    			add_location(main, file, 62, 0, 1391);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1116,12 +1116,8 @@ var app = (function () {
 
     	const clearAll = () => {
     		const isConfirmed = confirm("Are you sure you want to remove all items?");
-
-    		if (isConfirmed) {
-    			$$invalidate(2, list = []);
-    			saveToLocalStorage();
-    		}
-
+    		if (isConfirmed) $$invalidate(2, list = []);
+    		saveToLocalStorage();
     		focusOnInput();
     	};
 

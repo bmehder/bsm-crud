@@ -8,9 +8,13 @@
   $: isUpdateMode = selectedItem !== null;
 
   const getListFromLocalStorage = () => {
-    let savedListString = localStorage.getItem("list");
-    let savedListArray = savedListString ? savedListString.split(",") : [];
-    list = savedListArray;
+    // let savedListString = localStorage.getItem("list");
+    // let savedListArray = savedListString ? savedListString.split(",") : [];
+    // list = savedListArray;
+    list =
+      localStorage.getItem("list") !== null
+        ? localStorage.getItem("list").split(",")
+        : [];
   };
 
   const saveToLocalStorage = () => localStorage.setItem("list", list);

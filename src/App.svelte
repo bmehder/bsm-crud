@@ -18,16 +18,13 @@
   const saveToLocalStorage = () => localStorage.setItem("list", list);
 
   const addToList = () => {
-    if (value) {
-      isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]);
-    }
-    // saveToLocalStorage();
+    value &&
+      (isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]));
     handleInput();
   };
 
   const removeFromList = (i) => {
     list = list.filter((item, arrIdx) => arrIdx !== i);
-    // saveToLocalStorage();
     handleInput();
   };
 
@@ -43,9 +40,7 @@
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
-    if (isConfirmed) list = [];
-    saveToLocalStorage();
-    // focusOnInput();
+    isConfirmed ? (list = []) : focusOnInput();
   };
 
   const focusOnInput = () => input.focus();

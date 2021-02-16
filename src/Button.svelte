@@ -4,7 +4,7 @@
 </script>
 
 <button disabled={!value} on:click>
-  {isUpdateMode ? "Update" : "Add"} Item
+  {isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 
 <style>
@@ -20,7 +20,8 @@
   }
   button:disabled {
     cursor: not-allowed;
-    background: #ccc;
+    background: #eee;
+    color: #aaa;
     box-shadow: none;
   }
   button:hover {

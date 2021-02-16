@@ -60,14 +60,14 @@
 <main>
   <Header title="CRUD App+" subTitle="w/ Local Storage" />
 
-  <Input {focus} bind:value />
+  <Input bind:value {focus} />
 
-  <Button {isUpdateMode} {value} on:click={addToList} />
+  <Button on:click={addToList} {isUpdateMode} {value} />
 
   <List
-    {list}
     on:handleinput={(e) => handleInput(e.detail)}
     on:removeitem={(e) => removeFromList(e.detail)}
     on:clearall={(e) => clearAll()}
+    {list}
   />
 </main>

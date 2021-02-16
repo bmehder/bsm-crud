@@ -757,6 +757,7 @@ var app = (function () {
     	let t0;
     	let br;
     	let t1;
+    	let t2;
 
     	const block = {
     		c: function create() {
@@ -764,11 +765,12 @@ var app = (function () {
     			span = element("span");
     			t0 = text(/*title*/ ctx[0]);
     			br = element("br");
-    			t1 = text(/*subTitle*/ ctx[1]);
-    			attr_dev(span, "class", "svelte-17te3zr");
+    			t1 = space();
+    			t2 = text(/*subTitle*/ ctx[1]);
+    			attr_dev(span, "class", "svelte-3tzdqp");
     			add_location(span, file, 6, 2, 80);
     			add_location(br, file, 6, 22, 100);
-    			attr_dev(h1, "class", "svelte-17te3zr");
+    			attr_dev(h1, "class", "svelte-3tzdqp");
     			add_location(h1, file, 5, 0, 73);
     		},
     		l: function claim(nodes) {
@@ -780,10 +782,11 @@ var app = (function () {
     			append_dev(span, t0);
     			append_dev(h1, br);
     			append_dev(h1, t1);
+    			append_dev(h1, t2);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*title*/ 1) set_data_dev(t0, /*title*/ ctx[0]);
-    			if (dirty & /*subTitle*/ 2) set_data_dev(t1, /*subTitle*/ ctx[1]);
+    			if (dirty & /*subTitle*/ 2) set_data_dev(t2, /*subTitle*/ ctx[1]);
     		},
     		i: noop,
     		o: noop,
@@ -1010,9 +1013,8 @@ var app = (function () {
 
     function create_fragment$2(ctx) {
     	let button;
-    	let t0_value = (/*isUpdateMode*/ ctx[0] ? "Update" : "Add") + "";
-    	let t0;
-    	let t1;
+    	let t_value = (/*isUpdateMode*/ ctx[0] ? "Update Item" : "Add Item") + "";
+    	let t;
     	let button_disabled_value;
     	let mounted;
     	let dispose;
@@ -1020,10 +1022,9 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			button = element("button");
-    			t0 = text(t0_value);
-    			t1 = text(" Item");
+    			t = text(t_value);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
-    			attr_dev(button, "class", "svelte-1m9rwmn");
+    			attr_dev(button, "class", "svelte-1dlv5nx");
     			add_location(button, file$2, 5, 0, 80);
     		},
     		l: function claim(nodes) {
@@ -1031,8 +1032,7 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
-    			append_dev(button, t0);
-    			append_dev(button, t1);
+    			append_dev(button, t);
 
     			if (!mounted) {
     				dispose = listen_dev(button, "click", /*click_handler*/ ctx[2], false, false, false);
@@ -1040,7 +1040,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isUpdateMode*/ 1 && t0_value !== (t0_value = (/*isUpdateMode*/ ctx[0] ? "Update" : "Add") + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*isUpdateMode*/ 1 && t_value !== (t_value = (/*isUpdateMode*/ ctx[0] ? "Update Item" : "Add Item") + "")) set_data_dev(t, t_value);
 
     			if (dirty & /*value*/ 2 && button_disabled_value !== (button_disabled_value = !/*value*/ ctx[1])) {
     				prop_dev(button, "disabled", button_disabled_value);
@@ -1182,9 +1182,9 @@ var app = (function () {
     			t0 = space();
     			button = element("button");
     			button.textContent = "Clear All";
-    			attr_dev(ul, "class", "svelte-1h4m1hb");
+    			attr_dev(ul, "class", "svelte-1ukp9kc");
     			add_location(ul, file$3, 9, 2, 198);
-    			attr_dev(button, "class", "clear-btn svelte-1h4m1hb");
+    			attr_dev(button, "class", "svelte-1ukp9kc");
     			add_location(button, file$3, 21, 2, 519);
     		},
     		m: function mount(target, anchor) {
@@ -1288,11 +1288,11 @@ var app = (function () {
     			span = element("span");
     			span.textContent = "X";
     			t3 = space();
-    			attr_dev(li, "class", "svelte-1h4m1hb");
+    			attr_dev(li, "class", "svelte-1ukp9kc");
     			add_location(li, file$3, 15, 8, 357);
-    			attr_dev(span, "class", "svelte-1h4m1hb");
+    			attr_dev(span, "class", "svelte-1ukp9kc");
     			add_location(span, file$3, 16, 8, 425);
-    			attr_dev(div, "class", "svelte-1h4m1hb");
+    			attr_dev(div, "class", "svelte-1ukp9kc");
     			add_location(div, file$3, 11, 6, 241);
     			this.first = div;
     		},

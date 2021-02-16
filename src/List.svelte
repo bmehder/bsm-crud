@@ -19,9 +19,7 @@
     {/each}
   </ul>
 
-  <button class="clear-btn" on:click={() => dispatch("clearall")}
-    >Clear All</button
-  >
+  <button on:click={() => dispatch("clearall")}> Clear All </button>
 {/if}
 
 <style>
@@ -56,14 +54,14 @@
     width: 1.5em;
     height: 1.5em;
     line-height: 1.5em;
-    color: darkorange;
+    color: #ff8d1e;
     font-weight: bold;
     text-align: center;
     transition: transform 100ms ease-in-out;
     transform-origin: center;
   }
   ul span:hover {
-    background-color: darkorange;
+    background-color: hsl(30, 100%, 56%);
     color: white;
     border-radius: 50%;
     transform: scale(1.5) rotate(90deg);
@@ -72,7 +70,7 @@
   }
   button {
     padding: 1em;
-    background: darkorange;
+    background: #ff8d1e;
     border-radius: 8px;
     color: white;
     font-weight: bold;

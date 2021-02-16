@@ -760,9 +760,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Clear All";
     			attr_dev(ul, "class", "svelte-1tit2fg");
-    			add_location(ul, file, 67, 4, 1639);
+    			add_location(ul, file, 67, 4, 1635);
     			attr_dev(button, "class", "clear-btn svelte-1tit2fg");
-    			add_location(button, file, 79, 4, 1962);
+    			add_location(button, file, 79, 4, 1958);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -866,11 +866,11 @@ var app = (function () {
     			span.textContent = "X";
     			t3 = space();
     			attr_dev(li, "class", "svelte-1tit2fg");
-    			add_location(li, file, 73, 10, 1810);
+    			add_location(li, file, 73, 10, 1806);
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 74, 10, 1868);
+    			add_location(span, file, 74, 10, 1864);
     			attr_dev(div, "class", "svelte-1tit2fg");
-    			add_location(div, file, 69, 8, 1686);
+    			add_location(div, file, 69, 8, 1682);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -967,17 +967,17 @@ var app = (function () {
     			t6 = space();
     			if (if_block) if_block.c();
     			attr_dev(span, "class", "svelte-1tit2fg");
-    			add_location(span, file, 59, 4, 1416);
-    			add_location(br, file, 59, 25, 1437);
+    			add_location(span, file, 59, 4, 1412);
+    			add_location(br, file, 59, 25, 1433);
     			attr_dev(h1, "class", "svelte-1tit2fg");
-    			add_location(h1, file, 58, 2, 1407);
+    			add_location(h1, file, 58, 2, 1403);
     			attr_dev(input_1, "class", "svelte-1tit2fg");
-    			add_location(input_1, file, 61, 2, 1470);
+    			add_location(input_1, file, 61, 2, 1466);
     			button.disabled = button_disabled_value = !/*value*/ ctx[1];
     			attr_dev(button, "class", "svelte-1tit2fg");
-    			add_location(button, file, 62, 2, 1511);
+    			add_location(button, file, 62, 2, 1507);
     			attr_dev(main, "class", "svelte-1tit2fg");
-    			add_location(main, file, 57, 0, 1398);
+    			add_location(main, file, 57, 0, 1394);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1101,7 +1101,7 @@ var app = (function () {
     	};
 
     	const handleInput = selected => {
-    		if (selected !== null) {
+    		if (selected >= 0) {
     			$$invalidate(8, selectedItem = selected);
     			$$invalidate(1, value = list[selectedItem]);
     		} else {

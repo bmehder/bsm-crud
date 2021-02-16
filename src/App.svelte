@@ -1,11 +1,12 @@
 <script>
-  import { afterUpdate } from "svelte";
   import { onMount } from "svelte";
+  import { afterUpdate } from "svelte";
   import { fade } from "svelte/transition";
 
   let inputEl, value;
   let list = [];
   let selectedItem = null;
+
   $: isUpdateMode = selectedItem !== null;
 
   const getListFromLocalStorage = () =>
@@ -28,9 +29,9 @@
     handleInput();
   };
 
-  const handleInput = (selected) => {
-    if (selected >= 0) {
-      selectedItem = selected;
+  const handleInput = (newSelection) => {
+    if (newSelection >= 0) {
+      selectedItem = newSelection;
       value = list[selectedItem];
     } else {
       selectedItem = null;
@@ -59,7 +60,9 @@
   <h1>
     <span>CRUD App</span><br />w/ Local Storage
   </h1>
+
   <input bind:this={inputEl} bind:value />
+
   <button disabled={!value} on:click={addToList}>
     {isUpdateMode ? "Update" : "Add"} Item
   </button>

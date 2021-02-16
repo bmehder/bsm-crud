@@ -13,10 +13,7 @@
     list = savedListArray;
   };
 
-  const saveToLocalStorage = () => {
-    localStorage.clear();
-    localStorage.setItem("list", list);
-  };
+  const saveToLocalStorage = () => localStorage.setItem("list", list);
 
   const addToList = () => {
     if (value) {
@@ -55,10 +52,8 @@
     if (isConfirmed) {
       list = [];
       saveToLocalStorage();
-      focusOnInput();
-    } else {
-      focusOnInput();
     }
+    focusOnInput();
   };
 
   onMount(() => {

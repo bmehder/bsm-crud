@@ -7,49 +7,40 @@
   let selectedItem = null;
   $: isUpdateMode = selectedItem !== null;
 
-  const getListFromLocalStorage = () => {
-    // let savedListString = localStorage.getItem("list");
-    // let savedListArray = savedListString ? savedListString.split(",") : [];
-    // list = savedListArray;
-    list =
+  // $: console.log(selectedItem);
+
+  const getListFromLocalStorage = () =>
+    (list =
       localStorage.getItem("list") !== null
         ? localStorage.getItem("list").split(",")
-        : [];
-  };
+        : []);
 
   const saveToLocalStorage = () => localStorage.setItem("list", list);
 
   const addToList = () => {
     if (value) {
-      if (isUpdateMode) {
-        list[selectedItem] = value;
-      } else {
-        list = [...list, value];
-      }
+      isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]);
     }
     saveToLocalStorage();
-    resetInput();
+    handleInput();
   };
 
   const removeFromList = (i) => {
     list = list.filter((item, arrIdx) => arrIdx !== i);
     saveToLocalStorage();
-    resetInput();
+    handleInput();
   };
 
-  const resetInput = () => {
-    selectedItem = null;
-    value = "";
+  const handleInput = (i) => {
+    if (i >= 0) {
+      selectedItem = i;
+      value = list[selectedItem];
+    } else {
+      selectedItem = null;
+      value = "";
+    }
     focusOnInput();
   };
-
-  const prepareForUpdate = (i) => {
-    selectedItem = i;
-    value = list[selectedItem];
-    focusOnInput();
-  };
-
-  const focusOnInput = () => input.focus();
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
@@ -59,6 +50,8 @@
     }
     focusOnInput();
   };
+
+  const focusOnInput = () => input.focus();
 
   onMount(() => {
     getListFromLocalStorage();
@@ -84,7 +77,7 @@
           in:fade={{ delay: 100, duration: 100 }}
           out:fade={{ delay: 0, duration: 100 }}
         >
-          <li on:click={() => prepareForUpdate(i)}>{item}</li>
+          <li on:click={() => handleInput(i)}>{item}</li>
           <span on:click={() => removeFromList(i)}>X</span>
         </div>
       {/each}

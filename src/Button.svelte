@@ -1,12 +1,15 @@
 <script>
+  import { value } from "./store";
+
   export let isUpdateMode = false;
-  export let value = "";
+  $value;
 </script>
 
-<button disabled={!value} on:click>
+<button disabled={!$value} on:click>
   {isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 
+<!-- <button disabled={!$value} on:click> -->
 <style>
   button {
     padding: 1em;

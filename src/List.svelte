@@ -9,7 +9,7 @@
 
   const removeFromList = (i) => {
     $list = $list.filter((_, arrIdx) => arrIdx !== i);
-    // handleInput();
+    dispatch("handleinput");
   };
 
   const clearAll = () => {

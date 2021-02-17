@@ -1,18 +1,21 @@
 <script>
   import { onMount } from "svelte";
+  import { value } from "./store";
+  import { focus } from "./store";
 
-  export let value = "";
-  export let focus = false;
+  $value;
+
+  $focus = false;
 
   let inputEl;
   const focusOnInput = () => inputEl.focus();
 
-  $: focus && focusOnInput();
+  $: $focus && focusOnInput();
 
   onMount(() => focusOnInput());
 </script>
 
-<input bind:this={inputEl} bind:value />
+<input bind:this={inputEl} bind:value={$value} />
 
 <style>
   input {

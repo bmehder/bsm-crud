@@ -1,25 +1,38 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { list } from "./store";
   import { fade } from "svelte/transition";
-  export let list;
 
   const dispatch = createEventDispatcher();
+
+  $list;
+
+  const removeFromList = (i) => {
+    $list = $list.filter((_, arrIdx) => arrIdx !== i);
+    // handleInput();
+  };
+
+  const clearAll = () => {
+    const isConfirmed = confirm("Are you sure you want to remove all items?");
+    isConfirmed && ($list = []);
+    dispatch("handleinput");
+  };
 </script>
 
-{#if list.length}
+{#if $list.length}
   <ul>
-    {#each list as item, i (i)}
+    {#each $list as item, i (i)}
       <div
         in:fade={{ delay: 100, duration: 100 }}
         out:fade={{ delay: 0, duration: 100 }}
       >
         <li on:click={() => dispatch("handleinput", i)}>{item}</li>
-        <span on:click={() => dispatch("removeitem", i)}>X</span>
+        <span on:click={() => removeFromList(i)}>X</span>
       </div>
     {/each}
   </ul>
 
-  <button on:click={() => dispatch("clearall")}> Clear All </button>
+  <button on:click={() => clearAll()}> Clear All </button>
 {/if}
 
 <style>

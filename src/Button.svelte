@@ -9,7 +9,6 @@
   {isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 
-<!-- <button disabled={!$value} on:click> -->
 <style>
   button {
     padding: 1em;

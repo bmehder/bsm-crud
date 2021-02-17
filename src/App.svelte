@@ -54,7 +54,7 @@
 <main>
   <Header title="CRUD App+" subTitle="w/ Local Storage" />
 
-  <Input {$value} />
+  <Input />
 
   <Button on:click={addToList} {isUpdateMode} />
 

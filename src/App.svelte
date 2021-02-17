@@ -21,7 +21,7 @@
 
   const removeFromList = (i) => {
     list = list.filter((_, arrIdx) => arrIdx !== i);
-    handleInput();
+    return handleInput();
   };
 
   const clearAll = () => {
@@ -34,11 +34,11 @@
     if (newSelection >= 0) {
       selectedItem = newSelection;
       value = list[selectedItem];
+      focus = true;
     } else {
       selectedItem = null;
       value = "";
     }
-    focus = true;
   };
 
   onMount(() => {

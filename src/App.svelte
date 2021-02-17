@@ -16,18 +16,18 @@
   const addToList = () => {
     value &&
       (isUpdateMode ? (list[selectedItem] = value) : (list = [...list, value]));
-    return handleInput();
+    handleInput();
   };
 
   const removeFromList = (i) => {
     list = list.filter((_, arrIdx) => arrIdx !== i);
-    return handleInput();
+    handleInput();
   };
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && (list = []);
-    return handleInput();
+    handleInput();
   };
 
   const handleInput = (newSelection) => {

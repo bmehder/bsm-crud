@@ -1,5 +1,5 @@
 
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -1554,7 +1554,7 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t2 = space();
     			create_component(list_1.$$.fragment);
-    			add_location(main, file$4, 59, 0, 1403);
+    			add_location(main, file$4, 59, 0, 1382);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1645,18 +1645,18 @@ var app = (function () {
     		? $$invalidate(2, list[selectedItem] = value, list)
     		: $$invalidate(2, list = [...list, value]));
 
-    		return handleInput();
+    		handleInput();
     	};
 
     	const removeFromList = i => {
     		$$invalidate(2, list = list.filter((_, arrIdx) => arrIdx !== i));
-    		return handleInput();
+    		handleInput();
     	};
 
     	const clearAll = () => {
     		const isConfirmed = confirm("Are you sure you want to remove all items?");
     		isConfirmed && $$invalidate(2, list = []);
-    		return handleInput();
+    		handleInput();
     	};
 
     	const handleInput = newSelection => {

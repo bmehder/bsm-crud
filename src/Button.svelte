@@ -1,12 +1,12 @@
 <script>
-  import { value } from "./store";
+  import { value, isUpdateMode } from "./store";
 
-  export let isUpdateMode = false;
+  $isUpdateMode = false;
   $value;
 </script>
 
 <button disabled={!$value} on:click>
-  {isUpdateMode ? "Update Item" : "Add Item"}
+  {$isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 
 <style>

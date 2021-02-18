@@ -4,11 +4,12 @@
   $: $isUpdateMode = $selectedItem !== null;
 
   const addToList = () => {
-    $value &&
-      ($isUpdateMode
-        ? ($list[$selectedItem] = $value)
-        : ($list = [...$list, $value]));
-    $selectedItem = null;
+    if ($value && $isUpdateMode) {
+      $list[$selectedItem] = $value.trim();
+      $selectedItem = null;
+    } else {
+      $list = [...$list, $value.trim()];
+    }
     $value = "";
   };
 </script>
@@ -17,12 +18,7 @@
   on:keydown={(e) => e.code === "Enter" && $value && addToList($value)}
 />
 
-<button
-  disabled={!$value}
-  on:click={() => {
-    addToList($value);
-  }}
->
+<button disabled={!$value} on:click={() => addToList($value)}>
   {$isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 

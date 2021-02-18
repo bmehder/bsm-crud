@@ -5,6 +5,7 @@
   let inputEl;
 
   $: $focus && inputEl.focus();
+
   afterUpdate(() => ($focus = true));
 </script>
 

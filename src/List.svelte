@@ -1,11 +1,7 @@
 <script>
   import { afterUpdate } from "svelte";
-  import { list, value, focus, selectedItem } from "./store";
   import { fade } from "svelte/transition";
-
-  afterUpdate(() => {
-    $focus = false;
-  });
+  import { list, value, focus, selectedItem } from "./store";
 
   const removeFromList = (i) => {
     $list = $list.filter((_, arrIdx) => arrIdx !== i);
@@ -24,6 +20,8 @@
       $focus = true;
     }
   };
+
+  afterUpdate(() => ($focus = false));
 </script>
 
 {#if $list.length}
@@ -33,7 +31,7 @@
         in:fade={{ delay: 100, duration: 100 }}
         out:fade={{ delay: 0, duration: 100 }}
       >
-        <li on:click={() => selectItem(i)}>{item}</li>
+        <li on:click={() => selectItem(i)}>{item.trim()}</li>
         <span on:click={() => removeFromList(i)}>X</span>
       </div>
     {/each}

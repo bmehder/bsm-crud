@@ -12,7 +12,7 @@
       localStorage.getItem("list") !== null &&
       localStorage.getItem("list") !== ""
         ? localStorage.getItem("list").split(",")
-        : [];
+        : $list;
   });
 
   afterUpdate(() => {
@@ -22,7 +22,7 @@
 </script>
 
 <main>
-  <Header title="CRUD App+" subTitle="w/ Local Storage" />
+  <Header title="CRUD App+" subTitle="w/ Local Storage & Svelte Store" />
 
   <Input />
 

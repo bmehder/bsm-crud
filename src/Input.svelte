@@ -1,9 +1,11 @@
 <script>
+  import { afterUpdate } from "svelte";
   import { value, focus } from "./store";
 
   let inputEl;
 
   $: $focus && inputEl.focus();
+  afterUpdate(() => ($focus = true));
 </script>
 
 <input bind:this={inputEl} bind:value={$value} />

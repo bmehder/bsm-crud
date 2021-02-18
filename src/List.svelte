@@ -1,6 +1,11 @@
 <script>
+  import { afterUpdate } from "svelte";
   import { list, value, focus, selectedItem } from "./store";
   import { fade } from "svelte/transition";
+
+  afterUpdate(() => {
+    $focus = false;
+  });
 
   const removeFromList = (i) => {
     $list = $list.filter((_, arrIdx) => arrIdx !== i);
@@ -10,7 +15,7 @@
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && ($list = []);
-    $focus = true;
+    // $focus = true;
   };
 
   const selectItem = (newSelection) => {

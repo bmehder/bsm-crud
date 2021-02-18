@@ -10,7 +10,6 @@
         : ($list = [...$list, $value]));
     $selectedItem = null;
     $value = "";
-    $focus = true;
   };
 </script>
 

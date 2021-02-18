@@ -17,8 +17,9 @@
 
   afterUpdate(() => {
     localStorage.setItem("list", $list);
-    $focus = false;
+    $focus = true;
   });
+  $: console.log(list);
 </script>
 
 <main>

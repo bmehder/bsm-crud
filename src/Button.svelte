@@ -1,6 +1,8 @@
 <script>
   import { value, isUpdateMode, list, selectedItem, focus } from "./store";
 
+  $: $isUpdateMode = $selectedItem !== null;
+
   const addToList = () => {
     $value &&
       ($isUpdateMode

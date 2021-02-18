@@ -1,8 +1,6 @@
 <script>
-  import { list, value, focus, isUpdateMode, selectedItem } from "./store";
+  import { list, value, focus, selectedItem } from "./store";
   import { fade } from "svelte/transition";
-
-  $: $isUpdateMode = $selectedItem !== null;
 
   const removeFromList = (i) => {
     $list = $list.filter((_, arrIdx) => arrIdx !== i);
@@ -19,10 +17,8 @@
     if (newSelection >= 0) {
       $selectedItem = newSelection;
       $value = $list[$selectedItem];
-    } else {
-      $selectedItem = null;
+      $focus = true;
     }
-    $focus = true;
   };
 </script>
 

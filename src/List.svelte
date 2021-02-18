@@ -13,7 +13,7 @@
     $focus = true;
   };
 
-  const handleInput = (newSelection) => {
+  const selectItem = (newSelection) => {
     if (newSelection >= 0) {
       $selectedItem = newSelection;
       $value = $list[$selectedItem];
@@ -29,7 +29,7 @@
         in:fade={{ delay: 100, duration: 100 }}
         out:fade={{ delay: 0, duration: 100 }}
       >
-        <li on:click={() => handleInput(i)}>{item}</li>
+        <li on:click={() => selectItem(i)}>{item}</li>
         <span on:click={() => removeFromList(i)}>X</span>
       </div>
     {/each}

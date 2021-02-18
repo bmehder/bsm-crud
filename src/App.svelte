@@ -1,28 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import { afterUpdate } from "svelte";
-  import { list, focus, value, isUpdateMode, selectedItem } from "./store";
+  import { list, focus } from "./store";
   import Header from "./Header.svelte";
   import Input from "./Input.svelte";
   import Button from "./Button.svelte";
   import List from "./List.svelte";
 
-  $value;
   $focus;
   $list;
-  $isUpdateMode;
-  $selectedItem;
-
-  // const handleInput = (newSelection) => {
-  //   if (newSelection >= 0) {
-  //     $selectedItem = newSelection;
-  //     $value = $list[$selectedItem];
-  //   } else {
-  //     $selectedItem = null;
-  //     $value = "";
-  //   }
-  //   $focus = true;
-  // };
+  // $selectedItem;
 
   onMount(() => {
     $list =

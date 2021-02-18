@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import { value, isUpdateMode, selectedItem } from "./store";
+
+  import { value, isUpdateMode, selectedItem, list } from "./store";
   import { focus } from "./store";
 
   $value;

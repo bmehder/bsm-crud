@@ -1,8 +1,5 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   import { value, isUpdateMode, list, selectedItem } from "./store";
-
-  const dispatch = createEventDispatcher();
 
   $isUpdateMode = false;
   $selectedItem;
@@ -14,7 +11,6 @@
         ? ($list[$selectedItem] = $value)
         : ($list = [...$list, $value]));
     $selectedItem = null;
-    dispatch("handleinput");
     $value = "";
   };
 </script>

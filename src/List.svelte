@@ -6,15 +6,12 @@
   $selectedItem;
   $newSelection;
 
-  const removeFromList = (i) => {
-    $list = $list.filter((_, arrIdx) => arrIdx !== i);
-    handleInput();
-  };
+  const removeFromList = (i) =>
+    ($list = $list.filter((_, arrIdx) => arrIdx !== i));
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && ($list = []);
-    handleInput();
   };
 
   const handleInput = ($newSelection) => {

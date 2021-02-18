@@ -1,21 +1,30 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import { list } from "./store";
+  import { list, selectedItem, value, focus, newSelection } from "./store";
   import { fade } from "svelte/transition";
 
-  const dispatch = createEventDispatcher();
-
   $list;
+  $selectedItem;
+  $newSelection;
 
   const removeFromList = (i) => {
     $list = $list.filter((_, arrIdx) => arrIdx !== i);
-    dispatch("handleinput");
+    handleInput();
   };
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && ($list = []);
-    dispatch("handleinput");
+    handleInput();
+  };
+
+  const handleInput = ($newSelection) => {
+    if ($newSelection >= 0) {
+      $selectedItem = $newSelection;
+      $value = $list[$selectedItem];
+    } else {
+      $selectedItem = null;
+    }
+    $focus = true;
   };
 </script>
 
@@ -26,7 +35,7 @@
         in:fade={{ delay: 100, duration: 100 }}
         out:fade={{ delay: 0, duration: 100 }}
       >
-        <li on:click={() => dispatch("handleinput", i)}>{item}</li>
+        <li on:click={() => handleInput(i)}>{item}</li>
         <span on:click={() => removeFromList(i)}>X</span>
       </div>
     {/each}

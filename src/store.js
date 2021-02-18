@@ -5,5 +5,6 @@ const focus = writable(false);
 const value = writable("");
 const isUpdateMode = writable();
 const selectedItem = writable(null);
+const newSelection = writable();
 
-export { list, focus, value, isUpdateMode, selectedItem };
+export { list, focus, value, isUpdateMode, selectedItem, newSelection };

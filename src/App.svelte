@@ -13,26 +13,16 @@
   $isUpdateMode;
   $selectedItem;
 
-  // $: $isUpdateMode = selectedItem !== null;
-
-  const addToList = () => {
-    $value &&
-      ($isUpdateMode
-        ? ($list[$selectedItem] = $value)
-        : ($list = [...$list, $value]));
-    handleInput();
-  };
-
-  const handleInput = (newSelection) => {
-    if (newSelection >= 0) {
-      $selectedItem = newSelection;
-      $value = $list[$selectedItem];
-    } else {
-      $selectedItem = null;
-      $value = "";
-    }
-    $focus = true;
-  };
+  // const handleInput = (newSelection) => {
+  //   if (newSelection >= 0) {
+  //     $selectedItem = newSelection;
+  //     $value = $list[$selectedItem];
+  //   } else {
+  //     $selectedItem = null;
+  //     $value = "";
+  //   }
+  //   $focus = true;
+  // };
 
   onMount(() => {
     $list =
@@ -48,16 +38,12 @@
   });
 </script>
 
-<svelte:window
-  on:keydown={(e) => e.code === "Enter" && $value && addToList()}
-/>
-
 <main>
   <Header title="CRUD App+" subTitle="w/ Local Storage" />
 
   <Input />
 
-  <Button on:click={addToList} />
+  <Button />
 
-  <List on:handleinput={(e) => handleInput(e.detail)} />
+  <List />
 </main>

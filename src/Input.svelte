@@ -4,7 +4,7 @@
   import { focus } from "./store";
 
   $value;
-
+  $selectedItem;
   $focus = false;
 
   $: $isUpdateMode = $selectedItem !== null;

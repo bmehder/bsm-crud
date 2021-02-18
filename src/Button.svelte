@@ -1,11 +1,34 @@
 <script>
-  import { value, isUpdateMode } from "./store";
+  import { createEventDispatcher } from "svelte";
+  import { value, isUpdateMode, list, selectedItem } from "./store";
+
+  const dispatch = createEventDispatcher();
 
   $isUpdateMode = false;
+  $selectedItem;
   $value;
+
+  const addToList = () => {
+    $value &&
+      ($isUpdateMode
+        ? ($list[$selectedItem] = $value)
+        : ($list = [...$list, $value]));
+    $selectedItem = null;
+    dispatch("handleinput");
+    $value = "";
+  };
 </script>
 
-<button disabled={!$value} on:click>
+<svelte:window
+  on:keydown={(e) => e.code === "Enter" && $value && addToList($value)}
+/>
+
+<button
+  disabled={!$value}
+  on:click={() => {
+    addToList($value);
+  }}
+>
   {$isUpdateMode ? "Update Item" : "Add Item"}
 </button>
 

@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { afterUpdate } from "svelte";
-  import { list, focus, value, isUpdateMode } from "./store";
+  import { list, focus, value, isUpdateMode, selectedItem } from "./store";
   import Header from "./Header.svelte";
   import Input from "./Input.svelte";
   import Button from "./Button.svelte";
@@ -11,24 +11,24 @@
   $focus;
   $list;
   $isUpdateMode;
-  let selectedItem = null;
+  $selectedItem;
 
-  $: $isUpdateMode = selectedItem !== null;
+  // $: $isUpdateMode = selectedItem !== null;
 
   const addToList = () => {
     $value &&
       ($isUpdateMode
-        ? ($list[selectedItem] = $value)
+        ? ($list[$selectedItem] = $value)
         : ($list = [...$list, $value]));
     handleInput();
   };
 
   const handleInput = (newSelection) => {
     if (newSelection >= 0) {
-      selectedItem = newSelection;
-      $value = $list[selectedItem];
+      $selectedItem = newSelection;
+      $value = $list[$selectedItem];
     } else {
-      selectedItem = null;
+      $selectedItem = null;
       $value = "";
     }
     $focus = true;

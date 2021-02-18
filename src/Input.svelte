@@ -1,11 +1,13 @@
 <script>
   import { onMount } from "svelte";
-  import { value } from "./store";
+  import { value, isUpdateMode, selectedItem } from "./store";
   import { focus } from "./store";
 
   $value;
 
   $focus = false;
+
+  $: $isUpdateMode = $selectedItem !== null;
 
   let inputEl;
   const focusOnInput = () => inputEl.focus();

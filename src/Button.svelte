@@ -1,5 +1,5 @@
 <script>
-  import { value, isUpdateMode, list, selectedItem, focus } from "./store";
+  import { value, isUpdateMode, list, selectedItem } from "./store";
 
   $: $isUpdateMode = $selectedItem !== null;
 

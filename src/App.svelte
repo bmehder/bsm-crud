@@ -19,7 +19,6 @@
     localStorage.setItem("list", $list);
     $focus = true;
   });
-  $: console.log(list);
 </script>
 
 <main>

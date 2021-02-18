@@ -1,9 +1,5 @@
 <script>
-  import { value, isUpdateMode, list, selectedItem } from "./store";
-
-  $isUpdateMode = false;
-  $selectedItem;
-  $value;
+  import { value, isUpdateMode, list, selectedItem, focus } from "./store";
 
   const addToList = () => {
     $value &&
@@ -12,6 +8,7 @@
         : ($list = [...$list, $value]));
     $selectedItem = null;
     $value = "";
+    $focus = true;
   };
 </script>
 

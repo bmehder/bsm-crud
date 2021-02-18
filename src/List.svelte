@@ -1,22 +1,23 @@
 <script>
-  import { list, selectedItem, value, focus, newSelection } from "./store";
+  import { list, value, focus, isUpdateMode, selectedItem } from "./store";
   import { fade } from "svelte/transition";
 
-  $list;
-  $selectedItem;
-  $newSelection;
+  $: $isUpdateMode = $selectedItem !== null;
 
-  const removeFromList = (i) =>
-    ($list = $list.filter((_, arrIdx) => arrIdx !== i));
+  const removeFromList = (i) => {
+    $list = $list.filter((_, arrIdx) => arrIdx !== i);
+    $focus = true;
+  };
 
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && ($list = []);
+    $focus = true;
   };
 
-  const handleInput = ($newSelection) => {
-    if ($newSelection >= 0) {
-      $selectedItem = $newSelection;
+  const handleInput = (newSelection) => {
+    if (newSelection >= 0) {
+      $selectedItem = newSelection;
       $value = $list[$selectedItem];
     } else {
       $selectedItem = null;

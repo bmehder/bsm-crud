@@ -7,10 +7,6 @@
   import Button from "./Button.svelte";
   import List from "./List.svelte";
 
-  $focus;
-  $list;
-  // $selectedItem;
-
   onMount(() => {
     $list =
       localStorage.getItem("list") !== null &&

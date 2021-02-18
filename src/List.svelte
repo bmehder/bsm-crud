@@ -15,7 +15,6 @@
   const clearAll = () => {
     const isConfirmed = confirm("Are you sure you want to remove all items?");
     isConfirmed && ($list = []);
-    // $focus = true;
   };
 
   const selectItem = (newSelection) => {

@@ -14,11 +14,9 @@
   };
 
   const selectItem = (newSelection) => {
-    if (newSelection >= 0) {
-      $selectedItem = newSelection;
-      $value = $list[$selectedItem];
-      $focus = true;
-    }
+    $selectedItem = newSelection;
+    $value = $list[$selectedItem];
+    $focus = true;
   };
 
   afterUpdate(() => ($focus = false));
